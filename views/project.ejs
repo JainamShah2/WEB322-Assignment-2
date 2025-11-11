@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<Head>
+    <link rel="stylesheet" href="/css/main.css" />
+    <title><%= project.title %></title>
+</head>
+
+<body>
+  <!--Loads the navbar-->
+  <%- include('partials/navbar', { page: "" }) %>
+
+ <div class="container mx-auto p-4">
+
+   <!--Title Container-->
+      <div class="hero bg-base-100 text-center py-6 mb-8">
+        <div class="hero-content flex-col lg:flex-row">
+        <div>
+          <h1 class="text-5xl font-bold"><%= project.title %></h1>
+          <p class="py-6">
+            Below, you will find detailed information about the project: <%= project.title %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--2 grids that show image and information about project-->
+    <div class="grid grid-cols-2 gap-4">
+       <!--First grid that shows Project image -->
+      <div class="mb-8">
+        <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="w-full rounded-lg shadow-xl" />
+      </div>
+       <!--Second grid that shows project information and links to original site-->
+      <div>
+          <div class="mb-8">
+            <p class="text-lg"><%= project.intro_short %></p>
+          </div>
+          <br>
+        <div class="mb-8">
+          <h2 class="font-bold mb-4">Impact</h2>
+          <p class="text-lg"><%= project.impact %></p>
+        </div>
+        <br>
+        <div class="mb-8">
+          <p class="font-bold">
+            More Information: 
+          </p>
+          <a href="<%= project.original_source_url %>">
+            View Project Details
+          </a>
+      </div>
+        <br>
+         <!--Randomly generated quote using the scipt-->
+        <div class="mb-8">
+          <div id="quote-container" >
+            <p class="text-lg italic" id="quote-text"></p>
+            <p class="text-right mt-4" id="quote-author"></p>
+          </div>
+        </div>
+      </div>
+     <!--Button to return to previous site-->
+      <div class="mb-8">
+        <a href="#" onclick="history.back(); return false;" class="btn btn-secondary">Back</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // Scipt that requests random quote from website and sends that data to container using id
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("https://dummyjson.com/quotes/random")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("quote-text").textContent = `"${data.quote}"`;
+        document.getElementById("quote-author").textContent = `- ${data.author}`;
+      })
+  });
+  </script>
+</body>
+

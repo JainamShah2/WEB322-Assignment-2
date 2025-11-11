@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<Head>
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>About Me</title>
+</head>
+
+<body>
+ <!--Loads navbar-->
+  <%- include('partials/navbar', { page: '/about' }) %>
+
+ <div class="container mx-auto p-4">
+
+    <!--Title container showing basic information about me-->
+    <div class="hero bg-base-100 text-center py-6">
+      <div class="hero-content flex-col lg:flex-row">
+      <div>
+        <h1 class="text-5xl font-bold">About Me</h1>
+        <p class="py-6">
+        Jainam Shah,    Jshah66@myseneca.ca, 111085221
+        </p>
+      </div>
+    </div>
+    </div>    
+      <!--2 grids using tailwind-->
+      <div class="grid grid-cols-2 gap-4">
+        <!--First grid shows an image of Valorant I game I like to play-->
+        <div class="bg-base-200 ">
+        <img src="data:image/png;base64,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" alt "Valorant Logo"></img>
+        </div>
+        <!--Second grid is a paragraph with some basic information about me-->
+        <div class="bg-base-200">
+          My name is Jainam Shah and i'm a 20 year old student at Sencea studying Computer Science. 
+          I've always been intrested in computers been playing games since I was young so it felt natural
+          for me to go into this course. One of the games i've been playing alot of recently is Valorant. I'm
+          also working 2 jobs at the moment with one of them being at Calvin Klein in Vaughan Mills and the other
+          is at a VR place called Another World VR. I've been enjoying working at the VR place as it relates to something
+          i'm passionate about. 
+      </div>
+    </div>
+  </div>
+</body> 

@@ -37,11 +37,12 @@ function getProjectById(projectId) {
         if (project) {
             resolve(project);
         } else {
-            reject("Unable to find requested project");
+            reject("error");
         }
     });
 }
 
+// find and returns all projects that have a given sector id
 function getProjectsBySector(sector) {
     return new Promise((resolve, reject) => {
         let filteredProjects = projects.filter(project => 
@@ -51,7 +52,7 @@ function getProjectsBySector(sector) {
         if (filteredProjects.length > 0) {
             resolve(filteredProjects);
         } else {
-            reject("Unable to find requested projects");
+            reject("error");
         }
     });
 }
